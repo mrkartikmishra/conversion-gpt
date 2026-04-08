@@ -18,6 +18,7 @@ import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { Loader2 } from "lucide-react";
+import { authClient } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { useForm } from "@tanstack/react-form";
@@ -37,13 +38,37 @@ export default function SignupForm() {
   const [pendingProvider, setPendingProvider] = useState<SocialProvider | null>(
     null,
   );
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const form = useForm({
     defaultValues: { username: "", email: "", password: "" },
     validators: {
       onChange: signupSchema,
     },
-    onSubmit: async ({ value }) => {},
+    onSubmit: async ({ value }) => {
+      await authClient.signUp.email(
+        {
+          name: value.username,
+          email: value.email,
+          password: value.password,
+          callbackURL: "/",
+        },
+        {
+          onRequest: (ctx) => {
+            setIsLoading(true);
+          },
+          onSuccess: (ctx) => {
+            setIsLoading(false);
+            toast.success("Account created successfully!");
+            router.push("/");
+          },
+          onError: (ctx) => {
+            setIsLoading(false);
+            toast.error(ctx.error.message || "Registration failed.");
+          },
+        },
+      );
+    },
   });
 
   return (
@@ -231,7 +256,7 @@ export default function SignupForm() {
                     className="bg-[#ececec] hover:bg-white disabled:opacity-50 mt-2 rounded-full w-full h-13 font-semibold text-[16px] text-black"
                     disabled={!canSubmit || !isDirty}
                   >
-                    {isSubmitting ? (
+                    {isSubmitting || isLoading ? (
                       <Loader2 className="size-5 animate-spin" />
                     ) : (
                       "Sign Up"
