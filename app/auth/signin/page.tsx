@@ -72,7 +72,7 @@ export default function LoginForm() {
   });
 
   const handleSocialLogin = async (provider: SocialProvider) => {
-    setPendingProvider("google");
+    setPendingProvider(provider);
 
     try {
       await authClient.signIn.social({
@@ -130,7 +130,9 @@ export default function LoginForm() {
               variant="outline"
               disabled={false}
               className="bg-transparent hover:bg-[#2f2f2f] disabled:opacity-70 border-[#424242] rounded-xl w-full h-13 font-normal text-[15px] hover:text-white transition-colors"
-              onClick={() => {}}
+              onClick={() => {
+                handleSocialLogin("github");
+              }}
             >
               {pendingProvider === "github" ? (
                 <Loader2 className="mr-2 size-5 animate-spin" />
