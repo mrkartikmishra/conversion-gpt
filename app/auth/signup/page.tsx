@@ -94,13 +94,13 @@ export default function SignupForm() {
             className="mx-auto w-10 h-10"
             height={40}
             width={40}
-            alt="ConversionGPT"
+            alt="ConversationGPT"
           />
           <CardTitle className="font-semibold text-[#ececec] text-[32px] tracking-tight">
             Create an account
           </CardTitle>
           <CardDescription className="mx-auto max-w-80 text-[#b4b4b4] text-[15px] leading-relaxed">
-            Join ConversionGPT to get smarter responses and start building
+            Join ConversationGPT to get smarter responses and start building
             today.
           </CardDescription>
         </CardHeader>

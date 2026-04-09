@@ -49,15 +49,16 @@ export default async function ChatPageLayout({
                     variant="ghost"
                     className="flex items-center gap-1 hover:bg-[#2f2f2f] px-2 py-1 focus-visible:ring-0 h-auto font-semibold text-[#b4b4b4] text-[18px]"
                   >
-                    ConversionGPT <ChevronDown className="opacity-50 w-4 h-4" />
+                    ConversationGPT{" "}
+                    <ChevronDown className="opacity-50 w-4 h-4" />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="bg-[#2f2f2f] p-2 border-[#424242] rounded-xl min-w-50 text-white">
                   <DropdownMenuItem className="focus:bg-[#424242] rounded-lg">
-                    ConversionGPT Plus
+                    ConversationGPT Plus
                   </DropdownMenuItem>
                   <DropdownMenuItem className="focus:bg-[#424242] rounded-lg">
-                    ConversionGPT
+                    ConversationGPT
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>

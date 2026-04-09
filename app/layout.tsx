@@ -17,15 +17,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const TITLE = "ConversionGPT";
-const DESCRIPTION = "an AI powered conversion chatbot";
+const TITLE = "ConversationGPT";
+const DESCRIPTION = "an AI powered conversation chatbot";
 const BASE_URL = "http://localhost:3000";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: TITLE,
   description: DESCRIPTION,
-  keywords: "conversion-gpt,conversionGPT",
+  keywords: "conversation-gpt,conversationGPT",
   authors: [
     {
       name: "Kartik Mishra",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     url: BASE_URL,
     title: TITLE,
     description: DESCRIPTION,
-    siteName: "ConversionGPT",
+    siteName: "ConversationGPT",
     images: [
       {
         url: `${BASE_URL}/og.jpg`,
