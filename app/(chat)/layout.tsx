@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { ModelSelectorComponent } from "@/components/model-selector";
 import { SessionUser } from "@/types";
 import { UpgradeComponent } from "@/components/upgrade-component";
+import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -24,6 +25,14 @@ export default async function ChatPageLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (!session) {
+    redirect("/auth/signin");
+  }
+
   return (
     <SidebarProvider>
       <AppSidebar />
